@@ -7,7 +7,7 @@ if "%perl_type%" == "cygwin" (
   start /wait c:\cygwin\setup-x86.exe -q -g -P perl -P binutils -P make -P gcc -P gcc-core -P gcc-g++ -P make -P pkg-config -P libcrypt-devel -P openssl-devel -P autoconf -P automake -P m4 -P libtool -P curl
   set "PATH=C:\cygwin\usr\local\bin;C:\cygwin\bin;%PATH%"
 ) else if "%perl_type%" == "cygwin64" (
-  start /wait c:\cygwin64\setup-x86_64.exe -q -g -P perl -P binutils -P make -P gcc -P gcc-core -P gcc-g++ -P make -P pkg-config -P libcrypt-devel -P openssl-devel -P autoconf -P automake -P m4 -P libtool -P curl
+  start /wait C:\cygwin64\setup-x86_64.exe -qgnNdO -l C:\cygwin64\var\cache\setup -R c:\cygwin64 -s http://cygwin.mirror.constant.com -P cmake -P perl -P binutils -P make -P gcc -P gcc-core -P gcc-g++ -P make -P pkg-config -P g++ -P glibc-devel -P libdb-devel -P libcrypt-devel -P openssl-devel -P autoconf -P automake -P m4 -P libtool -P curl -P libcrypt-devel -P libncurses-devel -P libgd-devel -P libgdbm-devel -P libpcre-devel -P perl -P perl-CPAN -P perl-GD -P perl-devel
   set "PATH=C:\cygwin64\usr\local\bin;C:\cygwin64\bin;%PATH%"
 ) else if "%perl_type%" == "strawberry" (
   if not defined perl_version (
