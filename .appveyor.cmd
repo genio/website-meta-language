@@ -4,11 +4,13 @@ goto :eof
 :perl_setup
 if not defined perl_type set perl_type=system
 if "%perl_type%" == "cygwin" (
-  start /wait c:\cygwin\setup-x86.exe -q -g -P perl -P binutils -P make -P gcc -P gcc-core -P gcc-g++ -P make -P pkg-config -P libcrypt-devel -P openssl-devel -P autoconf -P automake -P m4 -P libtool -P curl
-  set "PATH=C:\cygwin\usr\local\bin;C:\cygwin\bin;%PATH%"
-) else if "%perl_type%" == "cygwin64" (
-  start /wait c:\cygwin64\setup-x86_64.exe -q -g -P perl -P binutils -P make -P gcc -P gcc-core -P gcc-g++ -P make -P pkg-config -P libcrypt-devel -P openssl-devel -P autoconf -P automake -P m4 -P libtool -P curl
-  set "PATH=C:\cygwin64\usr\local\bin;C:\cygwin64\bin;%PATH%"
+  REM Upgrade Cygwin, then install the necessary packages
+  REM Then copy repo to ~/repo
+  start /wait %CYGWIN%\\\bin\\wget.exe -O %CYGDRIVE%/setup-%ARCH%.exe https://cygwin.com/setup-%ARCH%.exe
+  start /wait %CYGWIN%\\setup-%ARCH%.exe --quiet-mode --upgrade-also --packages perl,binutils,cmake,make,gcc,g++,gcc-core,gcc-g++,glibc-devel,pkg-config,libcrypt-devel,openssl-devel,autoconf,automake,m4,libtool,curl,libdb-devel,libncurses-devel,libgd-devel,libgdbm-devel,libpcre-devel,perl-CPAN,perl-GD,perl-devel
+  start /wait %CYGSH% -c 'cpan App::cpanminus local::lib'
+  start /wait %CYGSH% -c 'echo "eval $(perl -I$HOME/perl_libs/lib/perl5 -Mlocal::lib=$HOME/perl_libs)" >>~/.bashrc'
+  xcopy /i /q /e /s . %CYGWIN%\\home\\appveyor\\repo
 ) else if "%perl_type%" == "strawberry" (
   if not defined perl_version (
     cinst -y StrawberryPerl
