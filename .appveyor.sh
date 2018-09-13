@@ -11,6 +11,8 @@ shopt -s lastpipe
 # export PATH=/usr/local/bin:/usr/bin:/bin
 
 # Set correct working directory
+mkdir -p ~/perl_libs
+eval "$(perl -Mlocal::lib=~/perl_libs)"
 cd repo/build
 perl -V
 cpanm -n Bit::Vector Class::XSAccessor File::Which Getopt::Long IO::All Image::Size Perl::Tidy Test::Code::TidyAll Term::ReadKey
