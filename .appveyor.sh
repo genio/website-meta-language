@@ -11,6 +11,7 @@ shopt -s lastpipe
 # export PATH=/usr/local/bin:/usr/bin:/bin
 
 # Set correct working directory
+echo $PATH
 cpan App::cpanminus local::lib
 mkdir -p ~/perl_libs
 eval "$(perl -Mlocal::lib=~/perl_libs)"
