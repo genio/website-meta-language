@@ -16,7 +16,7 @@ environment:
       ARCH: x86_64
       CYGWIN: 'C:\Cygwin64'
       CYGSH: 'C:\Cygwin64\bin\bash -e -l'
-      CYGDRIVE: /cygdrive/c/cygwin
+      CYGDRIVE: /cygdrive/c/cygwin64
 
 install:
     - choco install ag
