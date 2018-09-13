@@ -13,8 +13,8 @@ shopt -s lastpipe
 # Set correct working directory
 echo $PATH
 cpan App::cpanminus local::lib
-mkdir -p ~/perl_libs
-eval "$(perl -Mlocal::lib=~/perl_libs)"
+mkdir -p ~/perl5
+eval "$(perl -I/home/appveyor/perl5/lib/perl5 -Mlocal::lib=/home/appveyor/perl5)"
 cd repo/build
 perl -V
 cpanm -n Bit::Vector Class::XSAccessor File::Which Getopt::Long IO::All Image::Size Perl::Tidy Test::Code::TidyAll Term::ReadKey
