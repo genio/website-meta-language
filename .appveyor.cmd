@@ -9,8 +9,6 @@ if "%perl_type%" == "cygwin" (
   start /wait %CYGWIN%\\\bin\\wget.exe -O %CYGDRIVE%/setup-%ARCH%.exe https://cygwin.com/setup-%ARCH%.exe
   ECHO "Updating and installing necessary cygwin packages"
   start /wait %CYGWIN%\\setup-%ARCH%.exe --quiet-mode --upgrade-also --packages perl,binutils,cmake,make,gcc,g++,gcc-core,gcc-g++,glibc-devel,pkg-config,libcrypt-devel,openssl-devel,autoconf,automake,m4,libtool,curl,libdb-devel,libncurses-devel,libgd-devel,libgdbm-devel,libpcre-devel,perl-CPAN,perl-GD,perl-devel
-  ECHO "Trying to install cpanminus and local::lib"
-  start /wait %CYGSH% -c 'cpan App::cpanminus local::lib'
   ECHO "Copying repo to %CYGWIN%\\home\\appveyor\\repo"
   xcopy /i /q /e /s . %CYGWIN%\\home\\appveyor\\repo
 ) else if "%perl_type%" == "strawberry" (
