@@ -12,5 +12,6 @@ shopt -s lastpipe
 
 # Set correct working directory
 cd repo/build
+perl -V
 cpanm -n Bit::Vector Class::XSAccessor File::Which Getopt::Long IO::All Image::Size Perl::Tidy Test::Code::TidyAll Term::ReadKey
 $(perl ../src/wml_test/run_test.pl)

@@ -21,11 +21,11 @@ environment:
 install:
     - choco install ag
     - 'call .appveyor.cmd perl_setup'
-    - '%perl% -V'
 
 test_script:
     - cmd: if [%perl_type%]==[cygwin] (
         %CYGSH% repo/.appveyor.sh) else (
+        %perl% -V
         cpanm -n Bit::Vector Class::XSAccessor File::Which Getopt::Long IO::All Image::Size Perl::Tidy Test::Code::TidyAll Term::ReadKey
         cd build
         %perl% ..\src\wml_test\run_test.pl)

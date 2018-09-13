@@ -2,6 +2,7 @@ call :%*
 goto :eof
 
 :perl_setup
+mkdir build
 if not defined perl_type set perl_type=system
 if "%perl_type%" == "cygwin" (
   REM Upgrade Cygwin, then install the necessary packages
